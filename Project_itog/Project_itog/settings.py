@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v(0w!l#v+#rf=zqno$wkp6x=41z$-qq*38a%(24ceshl=!(^!d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = TEMPLATE_DEBUG = True
+THUMBNAIL_DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -59,9 +60,10 @@ ROOT_URLCONF = 'Project_itog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates',
-            ],
+        #'DIRS': [
+        #    BASE_DIR / 'templates',
+        #    ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # new
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,10 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
+#MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
