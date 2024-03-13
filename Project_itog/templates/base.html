@@ -13,7 +13,7 @@
     <div class="container-fluid bg-success text-white py-3">
         <div class="row">
             <div class="col-2">
-                <img src="logo.jpg" alt="logo" id="logo" width="50"></img>
+                <img src="logo.jpg" alt="logo" id="logo" width="50">
             </div>
             <div class="col-10 d-flex align-items-center">
                 <h1>Добро пожаловать в питомник собак и кошек</h1>
@@ -40,7 +40,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">О нас</a>
                     </li>
-                        <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'animal_catalog' %}">Наши животные</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">Войти</a>
                     </li>
                 </ul>

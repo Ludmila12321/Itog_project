@@ -12,7 +12,7 @@ class Gender(models.Model): # пол животного
     def __str__(self):
         return f'{self.gender}'
 
-class Animal(models.Model):
+class Animal(models.Model): # создание экземпляра класса "Животное"
     name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='animal_photos/')
     description = models.TextField(default='')
