@@ -2,17 +2,52 @@
 
 {% block content %}
     <div class="row">
-        {% for animal in animals %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ animal.photo.url }}" class="card-img-top" alt="{{ animal.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ animal.name }}</h5>
-                        <p class="card-text">Возраст: {{ animal.age }} года(лет)</p>
-                        <p class="card-text">Пол: {{ animal.gender }}</p>
+        <div class="col-md-3">
+            <h4>Фильтр по категории:</h4>
+            <form method="get">
+                <select name="category" onchange="this.form.submit()">
+                    <option value="">Все</option>
+                    {% for category in categories %}
+                        <option value="{{ category.title }}" {% if category.title == selected_category %}selected{% endif %}>{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            <h4>Фильтр по полу:</h4>
+            <form method="get">
+                <select name="gender" onchange="this.form.submit()">
+                    <option value="">Все</option>
+                    {% for gender in genders %}
+                        <option value="{{ gender.gender }}" {% if gender.gender == selected_gender %}selected{% endif %}>{{ gender.gender }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                {% for animal in animals %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ animal.photo.url }}" class="card-img-top" alt="{{ animal.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ animal.name }}</h5>
+                                <p class="card-text">Возраст: 
+                                    {% if animal.age == 0 %}
+                                        до года
+                                    {% elif animal.age == 1 %}
+                                        1 год
+                                    {% elif animal.age == 5 %}
+                                        5 лет
+                                    {% else %}
+                                        {{ animal.age }} лет
+                                    {% endif %}
+                                </p>
+                                <p class="card-text">Пол: {{ animal.gender }}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
 {% endblock %}

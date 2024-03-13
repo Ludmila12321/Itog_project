@@ -5,22 +5,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Питомник собак и кошек</title>
+    <title>Моздокский питомник для безнадзорных животных</title>
     {% bootstrap_css %}
+    <style>
+        .dark-green-gradient {
+            background: linear-gradient(to right, #033500, #223322);
+        }
+        .white-text {
+            color: white;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container-fluid bg-success text-white py-3">
+<body style="background-color: #f5f5f5;">
+    <div class="container-fluid dark-green-gradient text-white py-3">
         <div class="row">
             <div class="col-2">
                 {% load static %}
-                <img src="{% static 'logo.png' %}" alt="logo" id="logo" width="50"/>
+                <img src="{% static 'images/logo.png' %}" alt="logo" id="logo" width="150"/>
             </div>
             <div class="col-10 d-flex align-items-center">
-                <h1>Добро пожаловать в Моздокский питомник для </h1>
+                <h1>Добро пожаловать в Моздокский питомник для кошек и собак!</h1>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'index' %}" class="btn btn-outline-light mx-2 rounded-pill">Главная</a>
+                    <a href="{% url 'about' %}" class="btn btn-outline-light mx-2 rounded-pill">О нас</a>
+                    <a href="{% url 'animal_catalog' %}" class="btn btn-outline-light mx-2 rounded-pill">Наши животные</a>
+                    <a href="#" class="btn btn-outline-light mx-2 rounded-pill">Отзывы</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-light mx-2 rounded-pill">Войти</a>
+                </div>
             </div>
         </div>
     </div>
+
+    <img src="{% static 'images/dog_and_cat.jpg' %}" alt="dogs and cats" style="width: 100%;">
 
     <div class="container mt-3">
         {% block content %}
@@ -28,7 +47,7 @@
         {% endblock %}
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <nav class="navbar navbar-expand-lg navbar-light dark-green-gradient">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,32 +55,30 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Главная</a>
+                        <a class="nav-link text-white" href="{% url 'index' %}">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">О нас</a>
+                        <a class="nav-link text-white" href="{% url 'about' %}">О нас</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'animal_catalog' %}">Наши животные</a>
+                        <a class="nav-link text-white" href="{% url 'animal_catalog' %}">Наши животные</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                        <a class="nav-link text-white" href="{% url 'login' %}">Войти</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="footer bg-success text-white py-3">
+    <div class="footer dark-green-gradient text-white py-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 text-center text-md-left">
                     <div class="footer-links">
                         <a href="#">Связаться с администрацией сайта</a> |
-                        <a href="#">Избранное</a> |
-                        <!-- Добавьте остальные ссылки -->
                     </div>
-                    <p>&copy; {{ year }} Питомник собак и кошек</p>
+                    <p>&copy; 2024 Моздокский питомник для безнадзорных животных</p>
                 </div>
                 <div class="col-md-4 d-flex justify-content-center justify-content-md-end align-items-baseline">
                     <div class="social-links">
