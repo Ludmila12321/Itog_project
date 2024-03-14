@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'catalogue_app',
     'main_page',
     'bootstrap4',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [

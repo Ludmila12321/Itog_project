@@ -1,6 +1,8 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, UserLoginForm
+from django.contrib.auth.decorators import login_required
+from .forms import UserRegistrationForm, UserLoginForm, ReviewForm
+from .models import Review
 
 def register(request):
     if request.method == 'POST':
@@ -28,3 +30,21 @@ def user_login(request):
         form = UserLoginForm()
     
     return render(request, 'login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')  # Ссылаемся на главную страницу
+
+@login_required
+def reviews_page(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            new_review = Review(user=request.user, text=form.cleaned_data['text'], rating=form.cleaned_data['rating'])
+            new_review.save()
+            return redirect('reviews_page')
+
+    form = ReviewForm()
+    reviews = Review.objects.all().order_by('-created_at')
+
+    return render(request, 'reviews_page.html', {'form': form, 'reviews': reviews})

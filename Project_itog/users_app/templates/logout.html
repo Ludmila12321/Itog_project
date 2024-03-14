@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выход из системы</title>
+    {% bootstrap_css %}
+    <style>
+        .dark-green-gradient {
+            background: linear-gradient(to right, #033500, #223322);
+        }
+        .white-text {
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-color: #f5f5f5;">
+    <div class="container-fluid dark-green-gradient text-white py-3">
+        <h1>Вы успешно вышли из системы</h1>
+    </div>
+
+    <div class="container mt-3">
+        <p>Вы больше не авторизованы на нашем сайте. Чтобы снова войти, вы можете воспользоваться ссылкой ниже:</p>
+        <a href="{% url 'login' %}" class="btn btn-outline-dark rounded-pill mt-3">Войти</a>
+    </div>
+
+    {% bootstrap_javascript %}
+</body>
+</html>

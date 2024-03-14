@@ -13,3 +13,7 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+class ReviewForm(forms.Form):
+    text = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 1000}))
+    rating = forms.ChoiceField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
