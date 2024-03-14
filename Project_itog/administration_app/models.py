@@ -23,3 +23,14 @@ class Animal(models.Model): # создание экземпляра класса
 
     def __str__(self):
         return f'{self.name}, {self.age}, {self.category}, {self.description}'
+
+class New(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField(max_length=1800)
+    date_added = models.DateTimeField(auto_now_add=True)
+    image1 = models.ImageField(upload_to='news_images/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='news_images/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='news_images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title

@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Добро пожаловать на главную страницу Моздокского питомника для собак и кошек!</h1>
-<!-- дополнительный контент для главной страницы -->
+
+{% for news_item in news_list %}
+    <div class="news-block">
+        <h2>{{ news_item.title }}</h2>
+        <p>{{ news_item.date_added }}</p>
+        
+        <p>{{ news_item.content }}</p>
+        
+        {% if news_item.image1 %}
+            <img src="{{ news_item.image1.url }}" alt="Image 1">
+        {% endif %}
+        {% if news_item.image2 %}
+            <img src="{{ news_item.image2.url }}" alt="Image 2">
+        {% endif %}
+        {% if news_item.image3 %}
+            <img src="{{ news_item.image3.url }}" alt="Image 3">
+        {% endif %}
+    </div>
+{% endfor %}
+
 {% endblock %}
