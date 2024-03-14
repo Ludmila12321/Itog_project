@@ -1,6 +1,6 @@
 from django.db import models
 
-class Category(models.Model): # Категории: кошки, собаки, котята, щенки. Сделано с возможностью расширения в будущем
+class Category(models.Model): # Категории: кошки, собаки, котята, щенки.
     title = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Gender(models.Model): # пол животного
     def __str__(self):
         return f'{self.gender}'
 
-class Animal(models.Model): # создание экземпляра класса "Животное"
+class Animal(models.Model): # создание класса "Животное"
     name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='animal_photos/')
     description = models.TextField(default='')

@@ -3,18 +3,17 @@
 {% block content %}
     <div class="row">
         <div class="col-md-3">
-            <h4>Фильтр по категории:</h4>
+            <h4>Фильтры:</h4>
             <form method="get">
+                <h4>по категории:</h4>
                 <select name="category" onchange="this.form.submit()">
                     <option value="">Все</option>
                     {% for category in categories %}
                         <option value="{{ category.title }}" {% if category.title == selected_category %}selected{% endif %}>{{ category.title }}</option>
                     {% endfor %}
                 </select>
-            </form>
-
-            <h4>Фильтр по полу:</h4>
-            <form method="get">
+                
+                <h4>по полу:</h4>
                 <select name="gender" onchange="this.form.submit()">
                     <option value="">Все</option>
                     {% for gender in genders %}
@@ -36,10 +35,10 @@
                                         до года
                                     {% elif animal.age == 1 %}
                                         1 год
-                                    {% elif animal.age == 5 %}
-                                        5 лет
-                                    {% else %}
+                                    {% elif animal.age >= 5 %}
                                         {{ animal.age }} лет
+                                    {% else %}
+                                        {{ animal.age }} года
                                     {% endif %}
                                 </p>
                                 <p class="card-text">Пол: {{ animal.gender }}</p>
