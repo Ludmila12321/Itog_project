@@ -26,7 +26,7 @@
             <div class="row">
                 {% for animal in animals %}
                     <div class="col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card" data-toggle="modal" data-target="#animalModal{{ animal.id }}">
                             <img src="{{ animal.photo.url }}" class="card-img-top" alt="{{ animal.name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ animal.name }}</h5>
@@ -42,6 +42,27 @@
                                     {% endif %}
                                 </p>
                                 <p class="card-text">Пол: {{ animal.gender }}</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Модальное окно для животного {{ animal.id }} -->
+                    <div class="modal fade" id="animalModal{{ animal.id }}" tabindex="-1" role="dialog" aria-labelledby="animalModalLabel{{ animal.id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="animalModalLabel{{ animal.id }}">{{ animal.name }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ animal.photo.url }}" class="card-img-top" alt="{{ animal.name }}">
+                                    <p>Описание: {{ animal.description }}</p>
+                                    <p>Возраст: {{ animal.age }}</p>
+                                    <p>Пол: {{ animal.gender }}</p>
+                                    <p>Дата: {{ animal.registration_date }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
